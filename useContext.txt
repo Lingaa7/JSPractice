@@ -1,0 +1,74 @@
+import React, { createContext, useState } from 'react';
+import './style.css';
+import Child from './Child';
+import OtherChild from './OtherChild'
+export const GlobalInfo = createContext();
+
+function App() {
+  const [color, setColor] = useState('red');
+  const getDay=(day)=>{
+    console.log(day)
+  }
+  return (
+    <GlobalInfo.Provider value={{ color: color,getDay:getDay }}>
+      <h1>Hello </h1>
+      <Child />
+      <OtherChild />
+    </GlobalInfo.Provider>
+  );
+}
+
+export default App;
+
+import React,{useContext} from 'react';
+import {GlobalInfo} from './App'
+import SuperChild from './SuperChild'
+function Child(){
+  const {color} = useContext(GlobalInfo);
+  console.log(color)
+  return(
+    <div>
+      <h3 style={{color:color}}>Hi  i'm  Child</h3>
+      <SuperChild/>
+    </div>
+  )
+}
+
+export default Child;
+
+
+import React,{useContext} from 'react';
+import {GlobalInfo} from './App'
+function SuperChild(){
+  const {color,getDay} = useContext(GlobalInfo);
+  const day="sunday"
+  console.log(color)
+  return(
+    <div>
+      <h3 style={{color:color}}>Hi  i'm superChild</h3>
+      <button onClick={()=>getDay(day)}>getDay</button>
+    </div>
+  )
+}
+
+export default SuperChild;
+
+
+
+import React,{useContext} from 'react';
+import {GlobalInfo} from './App'
+
+function OtherChild(){
+  const {color} = useContext(GlobalInfo);
+  console.log(color)
+  return(
+    <div>
+      <h3 style={{color:color}}>Hi  i'm  OtherChild</h3>
+      
+    </div>
+  )
+}
+
+export default OtherChild;
+
+
