@@ -1,0 +1,14 @@
+const arr = [2,3,4,5,6,76,66];
+
+const position = 4;
+const insert = 55;
+
+for(let i=arr.length-1; i>=position; i--)
+{
+arr[i +1]  = arr[i]
+if(position === i)
+{
+  arr[i] = insert
+}
+}
+console.log(arr)
