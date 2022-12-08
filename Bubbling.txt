@@ -1,0 +1,31 @@
+import React from "react";
+import "./style.css";
+
+export default function App() {
+
+  function one(){
+    alert("one called")
+  }
+  function two(event){
+   
+    alert("two called")
+
+  }
+  function three(event){
+    event.stopPropagation()
+    alert("three called")
+  }
+  return (
+    <div>
+     <div onClick={one} style={{background:"red",padding:"10px"}}>
+     <div onClick={two} style={{background:"green",padding:"10px"}}>
+     <div onClick={three} style={{background:"blue",padding:"10px"}}>
+
+</div>
+
+</div>
+
+     </div>
+    </div>
+  );
+}
