@@ -1,0 +1,39 @@
+import React,{useState} from "react";
+import "./style.css";
+import King from './King'
+export default function App() {
+  const [data,setState]=useState({})
+  const {user}=data
+  const [lname,setLname]=useState("")
+
+function handler(e){
+setLname(e.target.value)
+}
+function submitt(e){
+setState({...data,sname:lname})
+e.preventDefault()
+}
+  return (
+    <div>
+      <h1>{data.sname}</h1>
+      <form onSubmit={submitt}>
+      <input type="text" placeholder="username" value={user} onChange={handler} name="user"/><br/><br/>
+      <input type="submit" />
+      </form>
+      <King name={data}/>
+    </div>
+  );
+}
+
+
+import React from "react";
+
+const King = (props) => {
+  return(
+    <div>
+      <p> hello Linganna {props.name.sname} </p>
+    </div>
+  )
+ }
+
+export default King
