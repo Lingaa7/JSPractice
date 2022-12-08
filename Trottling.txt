@@ -1,0 +1,27 @@
+import React from "react";
+import "./style.css";
+
+export default function App() {
+  const mythrottle=(fn,d)=>{
+
+    return function(...args){
+    document.getElementById("myid").disabled=true;
+    setTimeout(()=>{
+    fn();
+    },d);
+    }
+    }
+    
+    const newFun=mythrottle(()=>{
+    document.getElementById("myid").disabled=false;
+    console.log("user Clicked")
+    },2000)
+    
+  return (
+    <div>
+      <h1>Hello StackBlitz!</h1>
+    <button id="myid" onClick={newFun}>click</button>
+
+    </div>
+  );
+}
