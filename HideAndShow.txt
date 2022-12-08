@@ -1,0 +1,18 @@
+import React,{useState} from "react";
+import "./style.css";
+
+export default function App() {
+  const [num,setNum] = useState(true)
+  function hideShow(){
+    setNum(prev=>!prev)
+  }
+  return (
+    <div>
+      <h1>Hello StackBlitz!</h1>
+      {
+      num ? <h3>hide</h3>:null
+      }
+      <button onClick={hideShow}>Hide/Show</button>
+    </div>
+  );
+}
