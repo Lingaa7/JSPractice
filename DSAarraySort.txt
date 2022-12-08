@@ -1,0 +1,16 @@
+let data = [2,33,4,95,6,76,66];
+for(let i=0; i<data.length;i++)
+{
+  for(let j=0; j<data.length;j++)
+{
+    if(data[j]>data[j+1])
+{
+      let temp = data[j];
+      data[j] = data[j+1];
+      data[j+1] = temp
+    }
+  }
+}
+
+
+console.log(data)
