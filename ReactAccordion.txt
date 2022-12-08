@@ -1,0 +1,65 @@
+App.js
+
+import React from "react";
+ import data from './data' 
+ import Helllo from './Helllo'
+ import "./style.css"; 
+ export default function App() { 
+   
+   return (
+      <div> 
+        { 
+         data.names.map((val)=>{
+     return <Helllo key={val.questions} {...val} />}) }
+      
+      </div> 
+      );
+     }
+
+
+
+Helllo.js
+
+import React,{useState} from "react";
+import {AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai'
+
+const Helllo = ({questions,info})=> {
+  const [data,setData]=useState(false)
+  const onHandler = () =>{
+    setData(!data)
+  }
+return( 
+  <div>
+<strong>{questions}</strong>
+<button onClick={onHandler}>{data ?<AiOutlineMinus />  : <AiOutlinePlus/>
+      }</button>
+     
+      {
+        data && <p>{info}</p>
+      }
+    </div>
+)
+}
+
+export default Helllo
+
+**************************************
+
+data.json
+
+{
+  "names": [
+    {
+ "questions":"What is React js",
+ "city":"gulbarga",
+"info":"React js is javascript library",
+ "salary":"270crore",
+  "vehicles": {
+   "car":"limousine",
+   "bike":"ktm-duke",
+   "plane":"lufthansa"
+}
+}
+]
+
+}
